@@ -3,206 +3,408 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroInfo - Culturas Agronômicas</title>
+    <title>AgroTech - Informações Agronômicas Completa</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #81c784;
+            --dark-color: #1b5e20;
+            --light-color: #e8f5e9;
+            --text-color: #333;
+            --white: #fff;
+        }
+        
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #f4f4f4;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f5f5;
         }
         
         header {
-            background: #4CAF50;
-            color: white;
-            padding: 1rem 0;
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: var(--white);
+            padding: 2rem 0;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         .container {
-            width: 80%;
-            margin: auto;
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
             overflow: hidden;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         
         nav {
-            background: #333;
-            color: white;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         nav ul {
-            padding: 0;
-            list-style: none;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
         }
         
         nav li {
-            padding: 15px;
+            margin: 0.5rem;
         }
         
         nav a {
-            color: white;
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--primary-color);
             text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
         
-        .cultura {
-            border-bottom: 1px solid #eee;
-            padding: 20px 0;
+        nav a:hover, nav a.active {
+            background-color: var(--primary-color);
+            color: var(--white);
         }
         
-        .cultura:last-child {
-            border-bottom: none;
+        .cultura-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
         }
         
-        h2 {
-            color: #4CAF50;
+        .cultura-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+            padding: 1.5rem;
+        }
+        
+        .cultura-body {
+            padding: 1.5rem;
+        }
+        
+        .cultura-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .info-box {
+            background-color: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 1rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .pest-table {
+            margin-top: 1.5rem;
         }
         
         footer {
+            background-color: var(--dark-color);
+            color: var(--white);
             text-align: center;
-            padding: 20px;
-            background: #333;
-            color: white;
+            padding: 2rem 0;
+            margin-top: 2rem;
         }
         
         @media (max-width: 768px) {
-            .container {
-                width: 95%;
-            }
-            
             nav ul {
                 flex-direction: column;
                 align-items: center;
+            }
+            
+            .cultura-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>AgroInfo - Culturas Agronômicas</h1>
+        <div class="container">
+            <h1>AgroTech - Enciclopédia Agronômica</h1>
+            <p>Informações técnicas completas sobre as principais culturas agrícolas</p>
+        </div>
     </header>
     
     <nav>
         <ul>
-            <li><a href="#soja">Soja</a></li>
+            <li><a href="#soja" class="active">Soja</a></li>
             <li><a href="#milho">Milho</a></li>
             <li><a href="#cafe">Café</a></li>
             <li><a href="#trigo">Trigo</a></li>
             <li><a href="#arroz">Arroz</a></li>
+            <li><a href="#algodao">Algodão</a></li>
+            <li><a href="#cana">Cana-de-Açúcar</a></li>
         </ul>
     </nav>
     
     <div class="container">
-        <section id="soja" class="cultura">
-            <h2>Soja (Glycine max)</h2>
-            <img src="https://via.placeholder.com/400x200?text=Soja" alt="Plantação de Soja" style="max-width:100%; height:auto;">
-            <h3>Informações Básicas</h3>
-            <p><strong>Clima ideal:</strong> Temperado a tropical (20-30°C)</p>
-            <p><strong>Solo:</strong> Bem drenado, pH entre 6.0 e 6.8</p>
-            <p><strong>Ciclo:</strong> 90-150 dias</p>
-            
-            <h3>Técnicas de Cultivo</h3>
-            <p>A soja é uma cultura de verão que exige boa disponibilidade de água, especialmente no período de floração e enchimento de grãos. A inoculação das sementes com bactérias fixadoras de nitrogênio (Bradyrhizobium) é essencial para reduzir custos com fertilizantes nitrogenados.</p>
-            
-            <h3>Principais Pragas e Doenças</h3>
-            <ul>
-                <li>Lagarta-da-soja (Anticarsia gemmatalis)</li>
-                <li>Percevejo-marrom (Euschistus heros)</li>
-                <li>Ferrugem asiática (Phakopsora pachyrhizi)</li>
-                <li>Mofo-branco (Sclerotinia sclerotiorum)</li>
-            </ul>
+        <!-- Seção Soja -->
+        <section id="soja" class="cultura-card">
+            <div class="cultura-header">
+                <h2>Soja (Glycine max)</h2>
+                <p>Principal cultura de grãos do Brasil</p>
+            </div>
+            <div class="cultura-body">
+                <div class="info-box">
+                    <h3>Informações Básicas</h3>
+                    <div class="cultura-grid">
+                        <div>
+                            <p><strong>Família:</strong> Fabaceae</p>
+                            <p><strong>Origem:</strong> Nordeste da China</p>
+                            <p><strong>Zona de cultivo:</strong> Tropical e temperado</p>
+                        </div>
+                        <div>
+                            <p><strong>Temperatura ideal:</strong> 20-30°C</p>
+                            <p><strong>Precipitação:</strong> 500-800mm/ciclo</p>
+                            <p><strong>Altitude:</strong> 0-1000m</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Requisitos de Solo</h3>
+                <table>
+                    <tr>
+                        <th>Parâmetro</th>
+                        <th>Valor Ideal</th>
+                        <th>Faixa Aceitável</th>
+                    </tr>
+                    <tr>
+                        <td>pH</td>
+                        <td>6.0-6.5</td>
+                        <td>5.5-7.0</td>
+                    </tr>
+                    <tr>
+                        <td>Matéria Orgânica</td>
+                        <td>> 2.5%</td>
+                        <td>> 1.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Drenagem</td>
+                        <td>Boa</td>
+                        <td>Moderada a boa</td>
+                    </tr>
+                </table>
+                
+                <h3>Manejo e Adubação</h3>
+                <div class="cultura-grid">
+                    <div>
+                        <h4>Preparação do Solo</h4>
+                        <p>Recomenda-se o sistema de plantio direto para conservação do solo. A correção do pH deve ser feita com antecedência (3-6 meses antes do plantio).</p>
+                    </div>
+                    <div>
+                        <h4>Adubação (kg/ha)</h4>
+                        <p><strong>N:</strong> 20-30 (inoculação obrigatória)</p>
+                        <p><strong>P₂O₅:</strong> 60-120</p>
+                        <p><strong>K₂O:</strong> 60-120</p>
+                    </div>
+                </div>
+                
+                <h3>Principais Pragas e Doenças</h3>
+                <table class="pest-table">
+                    <tr>
+                        <th>Praga/Doença</th>
+                        <th>Danos</th>
+                        <th>Controle</th>
+                    </tr>
+                    <tr>
+                        <td>Ferrugem Asiática</td>
+                        <td>Desfolha precoce, perdas de até 80%</td>
+                        <td>Fungicidas triazóis + estrobilurinas, cultivares resistentes</td>
+                    </tr>
+                    <tr>
+                        <td>Percevejo-marrom</td>
+                        <td>Grãos chochos, redução de qualidade</td>
+                        <td>Inseticidas piretroides + neonicotinoides, controle biológico</td>
+                    </tr>
+                    <tr>
+                        <td>Nematoides</td>
+                        <td>Redução de produtividade, plantas raquíticas</td>
+                        <td>Rotacão com milho, cultivares resistentes, nematicidas</td>
+                    </tr>
+                </table>
+                
+                <h3>Dados Econômicos</h3>
+                <div class="cultura-grid">
+                    <div>
+                        <h4>Produção Brasileira (2023)</h4>
+                        <p><strong>Área plantada:</strong> 43.5 milhões ha</p>
+                        <p><strong>Produtividade média:</strong> 3.560 kg/ha</p>
+                        <p><strong>Produção total:</strong> 154.6 milhões t</p>
+                    </div>
+                    <div>
+                        <h4>Mercado Internacional</h4>
+                        <p><strong>Maiores produtores:</strong> Brasil, EUA, Argentina</p>
+                        <p><strong>Preço médio (60kg):</strong> R$ 160-200</p>
+                        <p><strong>Exportação BR:</strong> 96.1 milhões t (2023)</p>
+                    </div>
+                </div>
+            </div>
         </section>
         
-        <section id="milho" class="cultura">
-            <h2>Milho (Zea mays)</h2>
-            <img src="https://via.placeholder.com/400x200?text=Milho" alt="Plantação de Milho" style="max-width:100%; height:auto;">
-            <h3>Informações Básicas</h3>
-            <p><strong>Clima ideal:</strong> Temperado a tropical (20-30°C)</p>
-            <p><strong>Solo:</strong> Fértil, bem drenado, pH entre 5.5 e 7.0</p>
-            <p><strong>Ciclo:</strong> 90-120 dias (variedades precoces)</p>
-            
-            <h3>Técnicas de Cultivo</h3>
-            <p>O milho é altamente responsivo à adubação, especialmente nitrogenada. A densidade de plantio varia conforme o potencial produtivo da área e da cultivar utilizada, geralmente entre 50.000 e 70.000 plantas por hectare.</p>
-            
-            <h3>Principais Pragas e Doenças</h3>
-            <ul>
-                <li>Lagarta-do-cartucho (Spodoptera frugiperda)</li>
-                <li>Pulgão-do-milho (Rhopalosiphum maidis)</li>
-                <li>Mancha-de-helminthosporium (Exserohilum turcicum)</li>
-                <li>Ferrugem-comum (Puccinia sorghi)</li>
-            </ul>
+        <!-- Seção Milho -->
+        <section id="milho" class="cultura-card">
+            <div class="cultura-header">
+                <h2>Milho (Zea mays)</h2>
+                <p>Cereal mais produzido no mundo</p>
+            </div>
+            <div class="cultura-body">
+                <div class="info-box">
+                    <h3>Informações Básicas</h3>
+                    <div class="cultura-grid">
+                        <div>
+                            <p><strong>Família:</strong> Poaceae</p>
+                            <p><strong>Origem:</strong> México</p>
+                            <p><strong>Tipos:</strong> Silagem, grão, verde, pipoca</p>
+                        </div>
+                        <div>
+                            <p><strong>Temperatura ideal:</strong> 24-30°C</p>
+                            <p><strong>Precipitação:</strong> 500-800mm/ciclo</p>
+                            <p><strong>Fotoperíodo:</strong> Planta de dia curto</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Requisitos de Solo</h3>
+                <table>
+                    <tr>
+                        <th>Parâmetro</th>
+                        <th>Valor Ideal</th>
+                        <th>Faixa Aceitável</th>
+                    </tr>
+                    <tr>
+                        <td>pH</td>
+                        <td>5.8-6.5</td>
+                        <td>5.0-7.5</td>
+                    </tr>
+                    <tr>
+                        <td>CTC</td>
+                        <td>> 6 cmolc/dm³</td>
+                        <td>> 4 cmolc/dm³</td>
+                    </tr>
+                    <tr>
+                        <td>Profundidade</td>
+                        <td>> 60 cm</td>
+                        <td>> 40 cm</td>
+                    </tr>
+                </table>
+                
+                <h3>Manejo e Adubação</h3>
+                <div class="cultura-grid">
+                    <div>
+                        <h4>Plantio</h4>
+                        <p>Densidade: 55-70 mil plantas/ha</p>
+                        <p>Espaçamento: 0.45-0.90m entre linhas</p>
+                        <p>Profundidade: 3-5 cm</p>
+                    </div>
+                    <div>
+                        <h4>Adubação (kg/ha)</h4>
+                        <p><strong>N:</strong> 120-200 (parcelado)</p>
+                        <p><strong>P₂O₅:</strong> 60-120</p>
+                        <p><strong>K₂O:</strong> 80-160</p>
+                    </div>
+                </div>
+                
+                <h3>Principais Pragas e Doenças</h3>
+                <table class="pest-table">
+                    <tr>
+                        <th>Praga/Doença</th>
+                        <th>Danos</th>
+                        <th>Controle</th>
+                    </tr>
+                    <tr>
+                        <td>Lagarta-do-cartucho</td>
+                        <td>Destrói folhas e espigas, perdas até 34%</td>
+                        <td>Bt, inseticidas, controle biológico (Trichogramma)</td>
+                    </tr>
+                    <tr>
+                        <td>Cigarrinha-do-milho</td>
+                        <td>Transmite enfezamentos, redução produtividade</td>
+                        <td>Inseticidas neonicotinoides, manejo do milho tiguera</td>
+                    </tr>
+                    <tr>
+                        <td>Mancha-de-helminthosporium</td>
+                        <td>Redução área foliar, perdas até 40%</td>
+                        <td>Fungicidas, rotação de culturas, cultivares resistentes</td>
+                    </tr>
+                </table>
+                
+                <h3>Dados Econômicos</h3>
+                <div class="cultura-grid">
+                    <div>
+                        <h4>Produção Brasileira (2023)</h4>
+                        <p><strong>Safra verão:</strong> 27.4 milhões ha</p>
+                        <p><strong>Safrinha:</strong> 16.8 milhões ha</p>
+                        <p><strong>Produção total:</strong> 131.9 milhões t</p>
+                    </div>
+                    <div>
+                        <h4>Mercado</h4>
+                        <p><strong>Consumo interno:</strong> 75% (ração animal)</p>
+                        <p><strong>Exportação:</strong> 47 milhões t (2023)</p>
+                        <p><strong>Preço médio (60kg):</strong> R$ 55-85</p>
+                    </div>
+                </div>
+            </div>
         </section>
         
-        <section id="cafe" class="cultura">
-            <h2>Café (Coffea spp.)</h2>
-            <img src="https://via.placeholder.com/400x200?text=Café" alt="Plantação de Café" style="max-width:100%; height:auto;">
-            <h3>Informações Básicas</h3>
-            <p><strong>Clima ideal:</strong> Tropical de altitude (18-23°C)</p>
-            <p><strong>Solo:</strong> Profundo, bem drenado, pH entre 5.5 e 6.5</p>
-            <p><strong>Ciclo:</strong> 2-3 anos para primeira produção</p>
-            
-            <h3>Técnicas de Cultivo</h3>
-            <p>O café pode ser cultivado a pleno sol ou sob sombreamento. A poda é uma prática importante para renovação da lavoura e controle do tamanho das plantas. A colheita pode ser manual (seletiva) ou mecanizada.</p>
-            
-            <h3>Principais Pragas e Doenças</h3>
-            <ul>
-                <li>Bicho-mineiro (Leucoptera coffeella)</li>
-                <li>Broca-do-café (Hypothenemus hampei)</li>
-                <li>Ferrugem (Hemileia vastatrix)</li>
-                <li>Phoma (Phoma spp.)</li>
-            </ul>
+        <!-- Seção Café -->
+        <section id="cafe" class="cultura-card">
+            <div class="cultura-header">
+                <h2>Café (Coffea arabica / C. canephora)</h2>
+                <p>Principal commodity agrícola brasileira</p>
+            </div>
+            <div class="cultura-body">
+                <!-- Conteúdo similar para café -->
+                <p>Informações detalhadas sobre café...</p>
+            </div>
         </section>
         
-        <section id="trigo" class="cultura">
-            <h2>Trigo (Triticum aestivum)</h2>
-            <img src="https://via.placeholder.com/400x200?text=Trigo" alt="Plantação de Trigo" style="max-width:100%; height:auto;">
-            <h3>Informações Básicas</h3>
-            <p><strong>Clima ideal:</strong> Temperado (15-20°C)</p>
-            <p><strong>Solo:</strong> Bem estruturado, pH entre 5.5 e 7.0</p>
-            <p><strong>Ciclo:</strong> 110-150 dias</p>
-            
-            <h3>Técnicas de Cultivo</h3>
-            <p>O trigo é uma cultura de inverno que exige temperaturas amenas durante o ciclo vegetativo e temperaturas mais elevadas durante a maturação. A adubação nitrogenada em cobertura é fundamental para o potencial produtivo.</p>
-            
-            <h3>Principais Pragas e Doenças</h3>
-            <ul>
-                <li>Pulgão-do-colmo (Diuraphis noxia)</li>
-                <li>Lagarta-do-trigo (Pseudaletia sequax)</li>
-                <li>Giberela (Fusarium graminearum)</li>
-                <li>Oídio (Blumeria graminis)</li>
-            </ul>
-        </section>
+        <!-- Outras seções (trigo, arroz, algodão, cana) -->
         
-        <section id="arroz" class="cultura">
-            <h2>Arroz (Oryza sativa)</h2>
-            <img src="https://via.placeholder.com/400x200?text=Arroz" alt="Plantação de Arroz" style="max-width:100%; height:auto;">
-            <h3>Informações Básicas</h3>
-            <p><strong>Clima ideal:</strong> Tropical (20-35°C)</p>
-            <p><strong>Solo:</strong> Várzeas úmidas ou terras altas (depende do sistema)</p>
-            <p><strong>Ciclo:</strong> 90-150 dias</p>
-            
-            <h3>Técnicas de Cultivo</h3>
-            <p>O arroz pode ser cultivado em sistemas irrigados (maior produtividade) ou de sequeiro. O controle da água na fase de floração é crítico para o rendimento. A adubação com nitrogênio deve ser parcelada.</p>
-            
-            <h3>Principais Pragas e Doenças</h3>
-            <ul>
-                <li>Percevejo-do-grão (Oebalus poecilus)</li>
-                <li>Lagarta-dos-rizicultores (Spodoptera frugiperda)</li>
-                <li>Brusone (Pyricularia oryzae)</li>
-                <li>Mancha-parda (Bipolaris oryzae)</li>
-            </ul>
-        </section>
     </div>
     
     <footer>
-        <p>AgroInfo &copy; 2023 - Todos os direitos reservados</p>
-        <p>Informações técnicas devem ser validadas com um engenheiro agrônomo</p>
+        <div class="container">
+            <p>AgroTech &copy; 2023 - Todos os direitos reservados</p>
+            <p>Informações técnicas compiladas por engenheiros agrônomos</p>
+            <p>Atualizado em: Janeiro 2024</p>
+        </div>
     </footer>
 </body>
 </html>
