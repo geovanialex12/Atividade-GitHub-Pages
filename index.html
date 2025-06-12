@@ -1,54 +1,208 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroHelper - Aplicativo de Agronomia</title>
+    <title>AgroInfo - Culturas Agronômicas</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-        .section { margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
-        h2 { color: #2e7d32; margin-top: 0; }
-        .crop-card { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px; }
-        button { background: #2e7d32; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
-        button:hover { background: #1b5e20; }
-        input, select { padding: 8px; margin: 5px 0; width: 100%; max-width: 300px; }
-        #results { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            background: #333;
+            color: white;
+        }
+        
+        nav ul {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav li {
+            padding: 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .cultura {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+        
+        .cultura:last-child {
+            border-bottom: none;
+        }
+        
+        h2 {
+            color: #4CAF50;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>AgroHelper - Aplicativo de Agronomia</h1>
+    <header>
+        <h1>AgroInfo - Culturas Agronômicas</h1>
+    </header>
     
-    <div class="section">
-        <h2>Pesquisar Cultivos</h2>
-        <input type="text" id="crop-search" placeholder="Digite o nome, época ou tipo de solo">
-        <button id="search-btn">Pesquisar</button>
-        <div id="results"></div>
+    <nav>
+        <ul>
+            <li><a href="#soja">Soja</a></li>
+            <li><a href="#milho">Milho</a></li>
+            <li><a href="#cafe">Café</a></li>
+            <li><a href="#trigo">Trigo</a></li>
+            <li><a href="#arroz">Arroz</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="soja" class="cultura">
+            <h2>Soja (Glycine max)</h2>
+            <img src="https://via.placeholder.com/400x200?text=Soja" alt="Plantação de Soja" style="max-width:100%; height:auto;">
+            <h3>Informações Básicas</h3>
+            <p><strong>Clima ideal:</strong> Temperado a tropical (20-30°C)</p>
+            <p><strong>Solo:</strong> Bem drenado, pH entre 6.0 e 6.8</p>
+            <p><strong>Ciclo:</strong> 90-150 dias</p>
+            
+            <h3>Técnicas de Cultivo</h3>
+            <p>A soja é uma cultura de verão que exige boa disponibilidade de água, especialmente no período de floração e enchimento de grãos. A inoculação das sementes com bactérias fixadoras de nitrogênio (Bradyrhizobium) é essencial para reduzir custos com fertilizantes nitrogenados.</p>
+            
+            <h3>Principais Pragas e Doenças</h3>
+            <ul>
+                <li>Lagarta-da-soja (Anticarsia gemmatalis)</li>
+                <li>Percevejo-marrom (Euschistus heros)</li>
+                <li>Ferrugem asiática (Phakopsora pachyrhizi)</li>
+                <li>Mofo-branco (Sclerotinia sclerotiorum)</li>
+            </ul>
+        </section>
+        
+        <section id="milho" class="cultura">
+            <h2>Milho (Zea mays)</h2>
+            <img src="https://via.placeholder.com/400x200?text=Milho" alt="Plantação de Milho" style="max-width:100%; height:auto;">
+            <h3>Informações Básicas</h3>
+            <p><strong>Clima ideal:</strong> Temperado a tropical (20-30°C)</p>
+            <p><strong>Solo:</strong> Fértil, bem drenado, pH entre 5.5 e 7.0</p>
+            <p><strong>Ciclo:</strong> 90-120 dias (variedades precoces)</p>
+            
+            <h3>Técnicas de Cultivo</h3>
+            <p>O milho é altamente responsivo à adubação, especialmente nitrogenada. A densidade de plantio varia conforme o potencial produtivo da área e da cultivar utilizada, geralmente entre 50.000 e 70.000 plantas por hectare.</p>
+            
+            <h3>Principais Pragas e Doenças</h3>
+            <ul>
+                <li>Lagarta-do-cartucho (Spodoptera frugiperda)</li>
+                <li>Pulgão-do-milho (Rhopalosiphum maidis)</li>
+                <li>Mancha-de-helminthosporium (Exserohilum turcicum)</li>
+                <li>Ferrugem-comum (Puccinia sorghi)</li>
+            </ul>
+        </section>
+        
+        <section id="cafe" class="cultura">
+            <h2>Café (Coffea spp.)</h2>
+            <img src="https://via.placeholder.com/400x200?text=Café" alt="Plantação de Café" style="max-width:100%; height:auto;">
+            <h3>Informações Básicas</h3>
+            <p><strong>Clima ideal:</strong> Tropical de altitude (18-23°C)</p>
+            <p><strong>Solo:</strong> Profundo, bem drenado, pH entre 5.5 e 6.5</p>
+            <p><strong>Ciclo:</strong> 2-3 anos para primeira produção</p>
+            
+            <h3>Técnicas de Cultivo</h3>
+            <p>O café pode ser cultivado a pleno sol ou sob sombreamento. A poda é uma prática importante para renovação da lavoura e controle do tamanho das plantas. A colheita pode ser manual (seletiva) ou mecanizada.</p>
+            
+            <h3>Principais Pragas e Doenças</h3>
+            <ul>
+                <li>Bicho-mineiro (Leucoptera coffeella)</li>
+                <li>Broca-do-café (Hypothenemus hampei)</li>
+                <li>Ferrugem (Hemileia vastatrix)</li>
+                <li>Phoma (Phoma spp.)</li>
+            </ul>
+        </section>
+        
+        <section id="trigo" class="cultura">
+            <h2>Trigo (Triticum aestivum)</h2>
+            <img src="https://via.placeholder.com/400x200?text=Trigo" alt="Plantação de Trigo" style="max-width:100%; height:auto;">
+            <h3>Informações Básicas</h3>
+            <p><strong>Clima ideal:</strong> Temperado (15-20°C)</p>
+            <p><strong>Solo:</strong> Bem estruturado, pH entre 5.5 e 7.0</p>
+            <p><strong>Ciclo:</strong> 110-150 dias</p>
+            
+            <h3>Técnicas de Cultivo</h3>
+            <p>O trigo é uma cultura de inverno que exige temperaturas amenas durante o ciclo vegetativo e temperaturas mais elevadas durante a maturação. A adubação nitrogenada em cobertura é fundamental para o potencial produtivo.</p>
+            
+            <h3>Principais Pragas e Doenças</h3>
+            <ul>
+                <li>Pulgão-do-colmo (Diuraphis noxia)</li>
+                <li>Lagarta-do-trigo (Pseudaletia sequax)</li>
+                <li>Giberela (Fusarium graminearum)</li>
+                <li>Oídio (Blumeria graminis)</li>
+            </ul>
+        </section>
+        
+        <section id="arroz" class="cultura">
+            <h2>Arroz (Oryza sativa)</h2>
+            <img src="https://via.placeholder.com/400x200?text=Arroz" alt="Plantação de Arroz" style="max-width:100%; height:auto;">
+            <h3>Informações Básicas</h3>
+            <p><strong>Clima ideal:</strong> Tropical (20-35°C)</p>
+            <p><strong>Solo:</strong> Várzeas úmidas ou terras altas (depende do sistema)</p>
+            <p><strong>Ciclo:</strong> 90-150 dias</p>
+            
+            <h3>Técnicas de Cultivo</h3>
+            <p>O arroz pode ser cultivado em sistemas irrigados (maior produtividade) ou de sequeiro. O controle da água na fase de floração é crítico para o rendimento. A adubação com nitrogênio deve ser parcelada.</p>
+            
+            <h3>Principais Pragas e Doenças</h3>
+            <ul>
+                <li>Percevejo-do-grão (Oebalus poecilus)</li>
+                <li>Lagarta-dos-rizicultores (Spodoptera frugiperda)</li>
+                <li>Brusone (Pyricularia oryzae)</li>
+                <li>Mancha-parda (Bipolaris oryzae)</li>
+            </ul>
+        </section>
     </div>
     
-    <div class="section">
-        <h2>Calculadora de Água</h2>
-        <p>Calcule a necessidade hídrica para sua plantação:</p>
-        <select id="crop-select">
-            <!-- Opções serão preenchidas pelo JavaScript -->
-        </select>
-        <input type="number" id="area-input" placeholder="Área em hectares">
-        <button id="calculate-btn">Calcular</button>
-        <p id="water-result"></p>
-    </div>
-    
-    <div class="section">
-        <h2>Previsão Meteorológica</h2>
-        <input type="text" id="location-input" placeholder="Digite sua localização">
-        <button id="weather-btn">Buscar Previsão</button>
-        <div id="weather-result"></div>
-    </div>
-    
-    <div class="section">
-        <h2>Gerenciar Cultivos</h2>
-        <button id="add-crop-btn">Adicionar Novo Cultivo</button>
-        <div id="forms-container"></div>
-    </div>
-
-    <script src="agriculture-app.js"></script>
+    <footer>
+        <p>AgroInfo &copy; 2023 - Todos os direitos reservados</p>
+        <p>Informações técnicas devem ser validadas com um engenheiro agrônomo</p>
+    </footer>
 </body>
 </html>
